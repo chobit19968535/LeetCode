@@ -113,6 +113,40 @@ namespace LeetCode
                 return longest_subwords;
             }
         }
+        public int ID_0028_Find_the_Index_of_the_First_Occurrence_in_a_String(string haystack, string needle)
+        {
+            if(needle.Length > haystack.Length) return -1;
+            char head = needle[0];
+            int sublength = needle.Length;
+
+            List<int> logs = new List<int>();
+
+            for (int i = 0; i < haystack.Length; i++) 
+            {
+                if (haystack[i] == head) logs.Add(i);
+            }
+
+            bool found = true;
+            if (logs.Count == 0) return -1;
+            for (int i = 0; i<logs.Count; i++)
+            {
+                found = true;
+                for (int j = 0; j< sublength; j++)
+                {
+                    if (logs[i] + j >= haystack.Length) return -1;
+                    if (haystack[logs[i]+j] == needle[j]) continue;
+                    else
+                    {
+                        found = false;
+                        break;
+                    }
+                }
+                if (found) return logs[i];
+            }
+            return -1;
+
+        }
+
         
     }
 

@@ -27,11 +27,18 @@ namespace LeetCode
                 Console.WriteLine();
             }
 
-            if(true)
+            if(false)
             {
                 List<string> words = new List<string>() { "flower", "fkow" };
                 var ans_0014 = easy.ID_0014_Longest_Common_Prefix(words.ToArray());
                 Console.WriteLine(ans_0014);
+                Console.WriteLine();
+            }
+
+            if(true)
+            {
+                var ans_0028 = easy.ID_0028_Find_the_Index_of_the_First_Occurrence_in_a_String("mississippi", "issipi");
+                Console.WriteLine(ans_0028);
                 Console.WriteLine();
             }
 
