@@ -36,5 +36,85 @@ namespace LeetCode
             return ans;
 
         }
+        public bool ID_0009_IsPalindrome(int x)
+        {
+            if (x < 0) return false;
+            if (x == 0) return true;
+            List<int> encode = new List<int>();
+            while (x > 0) 
+            {
+                encode.Add(x%10);
+                x = x / 10;
+            }
+            encode.Reverse();
+
+            int left = 0;
+            int right = encode.Count - 1;
+
+            while(left < right)
+            {
+                if (encode[left] == encode[right])
+                {
+                    left++;
+                    right--;
+                }
+                else
+                {
+                    return false;
+                }    
+            }
+
+            return true;
+
+
+        }
+        public string ID_0014_Longest_Common_Prefix(string[] strs)
+        {
+            List<int> log = new List<int>();
+            List<string> wordsList = strs.ToList();
+            int max_length = wordsList.Min(x => x.Length);
+            for (int i = 0; i < max_length; i++) 
+            {
+                char c = wordsList[0][i];
+                bool same = true;
+                for (int j = 1; j<wordsList.Count; j++)
+                {
+                    if (wordsList[j][i] == c) continue;
+                    else same = false;
+                }
+                if (same)
+                {
+                    if (log.Count == 0) log.Add(1);
+                    else log.Add(log[i - 1] + 1);
+                }
+                else
+                    log.Add(0);
+            }
+            if (log.Count == 0) return "";
+            int maxstring_length = log.Max();
+            int index = log.IndexOf(maxstring_length);
+            string longest_subwords = "";
+
+            if (false)
+            {
+                for (int i = index - maxstring_length + 1; i <= index; i++)
+                {
+                    longest_subwords += wordsList[0][i].ToString();
+                }
+                return longest_subwords;
+            }
+            if(true)
+            {
+                for (int i = 0; i<log.Count; i++)
+                {
+                    if (log[i] != 0) { longest_subwords += wordsList[0][i]; }
+                    else break;
+                }
+                return longest_subwords;
+            }
+        }
+        
     }
+
+
 }
