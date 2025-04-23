@@ -37,8 +37,17 @@ namespace LeetCode
 
             if(true)
             {
-                var ans_0028 = easy.ID_0028_Find_the_Index_of_the_First_Occurrence_in_a_String("mississippi", "issipi");
-                Console.WriteLine(ans_0028);
+                //var ans_0028 = easy.ID_0028_Find_the_Index_of_the_First_Occurrence_in_a_String("mississippi", "issipi");
+                //Console.WriteLine(ans_0028);
+                //Console.WriteLine();
+            }
+
+            if(true)
+            {
+                int[] nums = new List<int>() { 1,3, 5 }.ToArray();
+                int target = 4;
+                var ans_0035 = easy.ID_0035_SearchInsert(nums, target);
+                Console.WriteLine(ans_0035);
                 Console.WriteLine();
             }
 

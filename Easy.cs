@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -146,8 +147,38 @@ namespace LeetCode
             return -1;
 
         }
+        public int ID_0035_SearchInsert(int[] nums, int target)
+        {
+            int l = 0;
+            int r = nums.Length - 1;
+            int m = (l + r) / 2;
 
-        
+            if (nums[0] >= target) return 0;
+            if (nums[r] < target) return r + 1;
+            if (m == 0) return 1;
+            while(l < r)
+            {
+                if (l == m) return l + 1;
+                if (nums[l] >= target) return l - 1;
+                if (nums[r] <= target) return r + 1;
+
+                if (nums[m] >= target & nums[m - 1] <target) return m;
+                if (nums[m] < target)
+                {
+                    l = m;
+                    m = (l + r) / 2;
+                }
+                if (nums[m] > target)
+                {
+                    r = m;
+                    m = (l + r) / 2;
+                }
+            }
+
+            return -1;
+        }
+
+
     }
 
 
