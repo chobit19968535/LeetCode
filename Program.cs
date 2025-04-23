@@ -44,10 +44,8 @@ namespace LeetCode
 
             if(true)
             {
-                int[] nums = new List<int>() { 1,3, 5 }.ToArray();
-                int target = 4;
-                var ans_0035 = easy.ID_0035_SearchInsert(nums, target);
-                Console.WriteLine(ans_0035);
+                var ans_0058 = easy.ID_0058_LengthOfLastWord("a");
+                Console.WriteLine(ans_0058);
                 Console.WriteLine();
             }
 

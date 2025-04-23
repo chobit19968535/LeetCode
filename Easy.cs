@@ -177,6 +177,25 @@ namespace LeetCode
 
             return -1;
         }
+        public int ID_0058_LengthOfLastWord(string s)
+        {
+            int l = s.Length - 1;
+            int cnt = 0;
+            bool scan = false;
+            for (int i = l; i>=0; i--)
+            {
+                if (s[i] != ' ')
+                {
+                    if(scan == false) scan = true;
+                    if(scan)cnt++;
+                }
+                else if(scan == true)
+                {
+                    return cnt;
+                }
+            }
+            return cnt;
+        }
 
 
     }
