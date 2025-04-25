@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
 using System.Text;
@@ -15,8 +16,8 @@ namespace LeetCode
             Dictionary<int, int> pair = new Dictionary<int, int>();
             Dictionary<int, int> log = new Dictionary<int, int>();
 
-            for (int i = 0; i < nums.Length; i++) 
-            { 
+            for (int i = 0; i < nums.Length; i++)
+            {
                 int value = target - nums[i];
                 int key = nums[i];
 
@@ -33,7 +34,7 @@ namespace LeetCode
                 }
 
             }
-            ans = new int[2] { -1, -1};
+            ans = new int[2] { -1, -1 };
             return ans;
 
         }
@@ -42,9 +43,9 @@ namespace LeetCode
             if (x < 0) return false;
             if (x == 0) return true;
             List<int> encode = new List<int>();
-            while (x > 0) 
+            while (x > 0)
             {
-                encode.Add(x%10);
+                encode.Add(x % 10);
                 x = x / 10;
             }
             encode.Reverse();
@@ -52,7 +53,7 @@ namespace LeetCode
             int left = 0;
             int right = encode.Count - 1;
 
-            while(left < right)
+            while (left < right)
             {
                 if (encode[left] == encode[right])
                 {
@@ -62,7 +63,7 @@ namespace LeetCode
                 else
                 {
                     return false;
-                }    
+                }
             }
 
             return true;
@@ -74,11 +75,11 @@ namespace LeetCode
             List<int> log = new List<int>();
             List<string> wordsList = strs.ToList();
             int max_length = wordsList.Min(x => x.Length);
-            for (int i = 0; i < max_length; i++) 
+            for (int i = 0; i < max_length; i++)
             {
                 char c = wordsList[0][i];
                 bool same = true;
-                for (int j = 1; j<wordsList.Count; j++)
+                for (int j = 1; j < wordsList.Count; j++)
                 {
                     if (wordsList[j][i] == c) continue;
                     else same = false;
@@ -104,9 +105,9 @@ namespace LeetCode
                 }
                 return longest_subwords;
             }
-            if(true)
+            if (true)
             {
-                for (int i = 0; i<log.Count; i++)
+                for (int i = 0; i < log.Count; i++)
                 {
                     if (log[i] != 0) { longest_subwords += wordsList[0][i]; }
                     else break;
@@ -116,26 +117,26 @@ namespace LeetCode
         }
         public int ID_0028_Find_the_Index_of_the_First_Occurrence_in_a_String(string haystack, string needle)
         {
-            if(needle.Length > haystack.Length) return -1;
+            if (needle.Length > haystack.Length) return -1;
             char head = needle[0];
             int sublength = needle.Length;
 
             List<int> logs = new List<int>();
 
-            for (int i = 0; i < haystack.Length; i++) 
+            for (int i = 0; i < haystack.Length; i++)
             {
                 if (haystack[i] == head) logs.Add(i);
             }
 
             bool found = true;
             if (logs.Count == 0) return -1;
-            for (int i = 0; i<logs.Count; i++)
+            for (int i = 0; i < logs.Count; i++)
             {
                 found = true;
-                for (int j = 0; j< sublength; j++)
+                for (int j = 0; j < sublength; j++)
                 {
                     if (logs[i] + j >= haystack.Length) return -1;
-                    if (haystack[logs[i]+j] == needle[j]) continue;
+                    if (haystack[logs[i] + j] == needle[j]) continue;
                     else
                     {
                         found = false;
@@ -156,13 +157,13 @@ namespace LeetCode
             if (nums[0] >= target) return 0;
             if (nums[r] < target) return r + 1;
             if (m == 0) return 1;
-            while(l < r)
+            while (l < r)
             {
                 if (l == m) return l + 1;
                 if (nums[l] >= target) return l - 1;
                 if (nums[r] <= target) return r + 1;
 
-                if (nums[m] >= target & nums[m - 1] <target) return m;
+                if (nums[m] >= target & nums[m - 1] < target) return m;
                 if (nums[m] < target)
                 {
                     l = m;
@@ -182,21 +183,56 @@ namespace LeetCode
             int l = s.Length - 1;
             int cnt = 0;
             bool scan = false;
-            for (int i = l; i>=0; i--)
+            for (int i = l; i >= 0; i--)
             {
                 if (s[i] != ' ')
                 {
-                    if(scan == false) scan = true;
-                    if(scan)cnt++;
+                    if (scan == false) scan = true;
+                    if (scan) cnt++;
                 }
-                else if(scan == true)
+                else if (scan == true)
                 {
                     return cnt;
                 }
             }
             return cnt;
         }
+        public int[] ID_0066_PlusOne(int[] digits)
+        {
+            bool carry = false;
+            int len = digits.Length;
+            digits[len - 1]++;
+            for (int i = len-1; i >= 0; i--) 
+            {
+                if (carry) 
+                {
+                    digits[i]++;
+                }
+                if (digits[i] != 10)
+                {
+                    carry= false;
+                    break;
+                }
+                else
+                {
+                    digits[i] = 0;
+                    carry = true;
+                }
+            }
+            if(carry)
+            {
+                int[] arr = new int[digits.Length + 1];
+                arr[0] = 1;
+                for (int i = 0; i < digits.Length; i++)
+                {
+                    arr[i+1] = digits[i];
+                }
+                return arr;
+            }
 
+            return digits;
+            
+        }
 
     }
 

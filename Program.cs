@@ -44,11 +44,18 @@ namespace LeetCode
 
             if(true)
             {
-                var ans_0058 = easy.ID_0058_LengthOfLastWord("a");
-                Console.WriteLine(ans_0058);
-                Console.WriteLine();
+                //var ans_0058 = easy.ID_0058_LengthOfLastWord("a");
+                //Console.WriteLine(ans_0058);
+                //Console.WriteLine();
             }
 
+            if (true)
+            {
+                int[] arr = new int[] { 9, 9};
+                var ans_0066 = easy.ID_0066_PlusOne(arr);
+                Console.WriteLine(ans_0066);
+                Console.WriteLine();
+            }
         }
     }
 }
