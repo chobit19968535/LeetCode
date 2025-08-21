@@ -233,6 +233,81 @@ namespace LeetCode
             return digits;
             
         }
+        public string ID_0067_AddBinary(string a, string b) 
+        {
+            if (a.Length > b.Length) pad(ref b, a.Length - b.Length);
+            if (b.Length > a.Length) pad(ref a, b.Length - a.Length);
+            StringBuilder st = new StringBuilder();
+
+            #region main
+            bool over_flow = false;
+            for (int i = a.Length - 1; i >= 0; i--)
+            {
+                if (over_flow)
+                {
+                    over_flow = false;
+                    var add_res = binary_add(a[i], b[i]);
+                    if (add_res[0]) over_flow = true;
+
+                    if(add_res[1]) add_res = binary_add('1', '1');
+                    else add_res = binary_add('0', '1');
+
+                    if (add_res[0]) over_flow = true;
+                    if (add_res[1]) st.Append("1");
+                    else st.Append("0");
+                }
+                else
+                {
+                    var add_res = binary_add(a[i], b[i]);
+                    over_flow = add_res[0];
+                    if (add_res[1]) st.Append("1");
+                    else st.Append("0");
+                }
+            }
+
+            if(over_flow) st.Append("1");
+
+            for(int idx = 0; idx < st.Length/2; idx++)
+            {
+                var tmp = st[idx];
+                st[idx] = st[st.Length - 1 - idx];
+                st[st.Length - 1 - idx] = tmp;
+            }
+            #endregion
+            return st.ToString();
+            
+        }
+
+        private void pad(ref string str, int goal_length)
+        {
+            StringBuilder st = new StringBuilder();
+            for (int i = 0; i<goal_length; i++)
+            {
+                st.Append("0");
+            }
+            st.Append(str);
+            str = st.ToString();
+        }
+        private bool[] binary_add(char a, char b)
+        {
+            // 0 表示進位
+            // 1 表示結果
+            bool[] res = new bool[2];
+            if (a == b)
+            {
+                if (a == '1') res[0] = true;
+                return res;
+            }
+
+            else
+            {
+                res[1] = true;
+                return res;
+            }
+
+
+
+        }
 
     }
 

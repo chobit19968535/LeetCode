@@ -49,11 +49,20 @@ namespace LeetCode
                 //Console.WriteLine();
             }
 
-            if (true)
+            if (false)
             {
                 int[] arr = new int[] { 9, 9};
                 var ans_0066 = easy.ID_0066_PlusOne(arr);
                 Console.WriteLine(ans_0066);
+                Console.WriteLine();
+            }
+
+            if (true)
+            {
+                string a = "1111";
+                string b = "1111";
+                var ans_0067 = easy.ID_0067_AddBinary(a, b);
+                Console.WriteLine(ans_0067);
                 Console.WriteLine();
             }
         }
